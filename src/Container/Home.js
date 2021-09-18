@@ -1,28 +1,59 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Logo from "../Assets/My_Logo.png";
-import { Registration,Login } from "../Utils/home";
+import { Registration, Login } from "../Utils/home";
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 import "../Styles/home.css";
-function Home() {
+function Home(props) {
+    
     const [login, setLogin] = useState(false);
-    const [name, setName] = useState("");
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [cpass, setCpass] = useState("");
+    const [error, setError] = useState("");
     
     const getValue = {
-        "name": name,
-        "username": username,
+        "email": email,
         "pass": pass,
         "cpass":cpass
     }
     const getFunc = {
-         "name": setName,
-        "username": setUsername,
+        "email": setEmail,
         "pass": setPass,
         "cpass":setCpass
     }
     const handleChange = (e,name) => {
         getFunc[name](e.target.value);
+    }
+    const handleRegister = () => {
+        if (pass === cpass) {
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, email, pass).then((res) => {
+                setError("");
+                if (res.user.displayName === null) {
+                    props.history.push("/p")
+                } else {
+                    props.history.push("/d")
+                }
+        }).catch((err) => {
+            setError(err.message.split(":")[1].split("(")[0])
+        })
+        } else {
+            setError("Passwords do not match")
+       }
+    }
+    const handleLogin = () => {
+            const auth = getAuth();
+            signInWithEmailAndPassword(auth, email, pass).then((res) => {
+                setError("");
+                if (res.user.displayName === null) {
+                    props.history.push("/p")
+                } else {
+                    props.history.push("/d")
+                }
+        }).catch((err) => {
+            setError(err.message.split(":")[1].split("(")[0])
+        })
+       
     }
     return (
     <div className="log-container">
@@ -35,13 +66,14 @@ function Home() {
                 </div>
             </div>
             <div className="log-right">
+                
                 {
                     login ?
                         <>
                              { Login.map((item) => {
                         return (
                          <div className="input" key={item.id}>
-                         <input  name={item.name} value={getValue[item.value]} placeholder={item.placeholder}  onChange={(e)=>handleChange(e,item.name)}   />
+                         <input type={item.type}  name={item.name} value={getValue[item.value]} placeholder={item.placeholder}  onChange={(e)=>handleChange(e,item.name)}   />
                          </div>
                     )
                 })}
@@ -51,13 +83,13 @@ function Home() {
                        { Registration.map((item) => {
                         return (
                          <div className="input" key={item.id}>
-                         <input  name={item.name} value={getValue[item.value]} placeholder={item.placeholder}  onChange={(e)=>handleChange(e,item.name)}   />
+                         <input type={item.type}  name={item.name} value={getValue[item.value]} placeholder={item.placeholder}  onChange={(e)=>handleChange(e,item.name)}   />
                          </div>
                     )
                 })}
                     </>
                 }
-                <div className="button">
+                <div className="button" onClick={login ? handleLogin:handleRegister}>
                     {
                         login ?
                             "Login"
@@ -65,6 +97,7 @@ function Home() {
                             "Register"
                     }
                 </div>
+                <strong className="error-msg">{ error ? error :"" }</strong>
                 <div className="but-lower">
                     {
                         login ?

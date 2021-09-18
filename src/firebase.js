@@ -1,4 +1,4 @@
-import firebase from "firebase";
+import { initializeApp } from "firebase/app";
 const config = {
   apiKey: "AIzaSyC_dgJSHFeEI4gFcYLt3ysUXnTXMUbn0M4",
   authDomain: "wizened-c6676.firebaseapp.com",
@@ -8,5 +8,4 @@ const config = {
   appId: "1:381453581774:web:7d1bcf1af65da20a6dbf9f",
   measurementId: "G-Q3D0ZET22C"
 };
-firebase.initializeApp(config);
-export default firebase;
+initializeApp(config);

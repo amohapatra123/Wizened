@@ -1,35 +1,36 @@
 export const Registration = [
     {
-        id: 0,
-        name: "name",
-        placeholder: "Name",
-    },
-    {
         id: 1,
-        name: "username",
-        placeholder: "Username",
+        name: "email",
+        placeholder: "Email",
+        type:"text"
     },
     {
         id: 2,
         name: "pass",
         placeholder: "Password",
+        type:"password"
     },
     {
         id: 3,
         name: "cpass",
         placeholder: "Confirm Password",
+        type:"password"
     }
 ]
 
 export const Login = [
     {
         id: 0,
-        name: "username",
-        placeholder:"Username",
+        name: "email",
+        placeholder:"Email",
+        type:"text"
     },
     {
         id: 1,
         name: "pass",
-        placeholder:"Password"
+        placeholder: "Password",
+        type:"password"
+        
     }
 ]
