@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+.dash-con{
+    width:100vw;
+    height: 100vh;
+    background: linear-gradient(0deg, #263457 -5.5%, rgba(38, 52, 87, 0) 100%);
+}
+.dash-top{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 176, 60, 0.69);
+}
+.dash-loc{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.loc-input{
+    margin-left: 10%;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid #FFFFFF;
+}
+.loc-input > input{
+    width: 90%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Fredoka One', cursive;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    letter-spacing: 0.11em;
+    color: #FFFFFF;
+}
+.loc-input > input::placeholder{
+    font-family: 'Fredoka One', cursive;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    letter-spacing: 0.11em;
+    color: #FFFFFF;
+}
+.dash-mid{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  
+}
+.current{
+    margin-left: 5%;
+    width: 50%;
+    height:40vh;
+    background: rgba(54, 67, 99, 0.25);
+    border-radius: 54px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Fredoka One', cursive;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    letter-spacing: 0.11em;
+    color: #FFFFFF;
+}
+.curr-top{
+    width: 100%;
+
+}
+.curr-top > img{
+    margin-left: 20px;
+}
+.curr-mid{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.curr-temp{
+    width: 50%;
+    padding-left: 20px;
+}
+@media screen and (min-width:600px) and (max-width:850px) {
+    .loc-input{
+        width: 100%;
+    }
+}
+@media screen and (max-width:600px){
+    .loc-input{
+        width: 100%;
+    }
+    .loc-input > input{
+        font-size: 20px;
+    }
+    .loc-input > input::placeholder{
+        font-size: 20px;
+    }
+}

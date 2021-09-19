@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import Logo from "../Assets/My_Logo.png";
 import { Registration, Login } from "../Utils/home";
 import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
@@ -29,11 +29,7 @@ function Home(props) {
             const auth = getAuth();
             createUserWithEmailAndPassword(auth, email, pass).then((res) => {
                 setError("");
-                if (res.user.displayName === null) {
-                    props.history.push("/p")
-                } else {
-                    props.history.push("/d")
-                }
+                props.history.push("/d")
         }).catch((err) => {
             setError(err.message.split(":")[1].split("(")[0])
         })
@@ -45,11 +41,7 @@ function Home(props) {
             const auth = getAuth();
             signInWithEmailAndPassword(auth, email, pass).then((res) => {
                 setError("");
-                if (res.user.displayName === null) {
-                    props.history.push("/p")
-                } else {
                     props.history.push("/d")
-                }
         }).catch((err) => {
             setError(err.message.split(":")[1].split("(")[0])
         })
