@@ -6,7 +6,7 @@ import { icon } from "../Utils/icons";
 import axios from "axios"
 const API_KEY="BDu1m5SWL1HT1TTkSM9w1DWvdkwGPW1e"
 function Dashboard() {
-    const { latitude, longitude, error } = usePosition();
+    const { latitude, longitude } = usePosition();
     const [locationName, setLocationName] = useState("");
     const [locationKey, setLocationKey] = useState(null);
     const [current, setCurrent] = useState([]);
